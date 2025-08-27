@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: codespark-backend
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false  # Set this in Render Dashboard
+    scaling:
+      minInstances: 1
+      maxInstances: 1
